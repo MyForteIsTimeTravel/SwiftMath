@@ -1,3 +1,10 @@
 framework module SwiftMath {
+  umbrella header "SwiftMath.h"
+
+  export *
+  module * { export * }
+}
+
+module SwiftMath.Swift {
     header "SwiftMath-Swift.h"
 }

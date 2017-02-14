@@ -6,25 +6,10 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 public final class Mat4 : Matrix {
-    private var x1 = 0;
-    private var x2 = 0;
-    private var x3 = 0;
-    private var x4 = 0;
-    
-    private var y1 = 0;
-    private var y2 = 0;
-    private var y3 = 0;
-    private var y4 = 0;
-    
-    private var z1 = 0;
-    private var z2 = 0;
-    private var z3 = 0;
-    private var z4 = 0;
-    
-    private var w1 = 0;
-    private var w2 = 0;
-    private var w3 = 0;
-    private var w4 = 0;
+    private var x1 = 0; private var x2 = 0; private var x3 = 0; private var x4 = 0;
+    private var y1 = 0; private var y2 = 0; private var y3 = 0; private var y4 = 0;
+    private var z1 = 0; private var z2 = 0; private var z3 = 0; private var z4 = 0;
+    private var w1 = 0; private var w2 = 0; private var w3 = 0; private var w4 = 0;
     
     public init () {}
     

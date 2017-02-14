@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6234344B1E53B16800460B18 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6234344A1E53B16800460B18 /* Random.swift */; };
 		CE7B16331E5372320016CB34 /* SwiftMath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7B16291E5372320016CB34 /* SwiftMath.framework */; };
 		CE7B16381E5372320016CB34 /* SwiftMathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B16371E5372320016CB34 /* SwiftMathTests.swift */; };
 		CE7B163A1E5372320016CB34 /* SwiftMath.h in Headers */ = {isa = PBXBuildFile; fileRef = CE7B162C1E5372320016CB34 /* SwiftMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -51,6 +52,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6234344A1E53B16800460B18 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		CE7B16291E5372320016CB34 /* SwiftMath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftMath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7B162C1E5372320016CB34 /* SwiftMath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftMath.h; sourceTree = "<group>"; };
 		CE7B162D1E5372320016CB34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				CE7B16451E53724E0016CB34 /* Vec3.swift */,
 				CE7B16461E53724E0016CB34 /* Vec4.swift */,
 				CE7B16471E53724E0016CB34 /* Vector.swift */,
+				6234344A1E53B16800460B18 /* Random.swift */,
 				CE7B162D1E5372320016CB34 /* Info.plist */,
 			);
 			path = SwiftMath;
@@ -250,6 +253,7 @@
 				CE7B164A1E53724E0016CB34 /* Vec2.swift in Sources */,
 				CE7B164E1E53724E0016CB34 /* Vec4.swift in Sources */,
 				CE7B16611E537F1E0016CB34 /* Mat4.swift in Sources */,
+				6234344B1E53B16800460B18 /* Random.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,6 +469,7 @@
 				CE7B163F1E5372320016CB34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE7B16401E5372320016CB34 /* Build configuration list for PBXNativeTarget "SwiftMathTests" */ = {
 			isa = XCConfigurationList;
@@ -473,6 +478,7 @@
 				CE7B16421E5372320016CB34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

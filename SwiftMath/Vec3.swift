@@ -17,7 +17,9 @@ public final class Vec3 : Vector {
     public func b () -> Float { return z }
     
     public init (x: Float, y: Float, z: Float) { self.x = x; self.y = y; self.z = z }
+    public init (r: Float, g: Float, b: Float) { self.x = r; self.y = g; self.z = b }
     public init (v: Float)                     { self.x = v; self.y = v; self.z = v }
+    public init ()                             { self.x = 0; self.y = 0; self.z = 0 }
     
     /* * * * * * * * * * * * * * * * * * * * *
      *  ARITHMETIC
@@ -77,5 +79,12 @@ public final class Vec3 : Vector {
     // TO-DO
     public func dot (other: Vec3) -> Float {
         return 0.0
+    }
+    
+    /* * * * * * * * * * * * * * * * * * * * *
+     *  DEBUG
+     * * * * * * * * * * * * * * * * * * * * */
+    public func toString () -> String {
+        return String("Vec3( x: \(x), y: \(y), z: \(z) )")
     }
 }

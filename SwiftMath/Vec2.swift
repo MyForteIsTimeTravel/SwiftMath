@@ -15,7 +15,9 @@ public final class Vec2 : Vector {
     public func g () -> Float { return y }
     
     public init (x: Float, y: Float) { self.x = x; self.y = y }
+    public init (r: Float, g: Float) { self.x = r; self.y = g }
     public init (v: Float)           { self.x = v; self.y = v }
+    public init ()                   { self.x = 0; self.y = 0 }
     
     /* * * * * * * * * * * * * * * * * * * * *
      *  ARITHMETIC OPERATIONS
@@ -72,5 +74,12 @@ public final class Vec2 : Vector {
     // TO-DO
     public func dot (other: Vec2) -> Float {
         return 0.0
+    }
+    
+    /* * * * * * * * * * * * * * * * * * * * *
+     *  DEBUG
+     * * * * * * * * * * * * * * * * * * * * */
+    public func toString () -> String {
+        return String("Vec2( x: \(x), y: \(y) )")
     }
 }

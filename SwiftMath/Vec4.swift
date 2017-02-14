@@ -19,7 +19,9 @@ public final class Vec4 : Vector {
     public func a () -> Float { return w }
     
     public init (x: Float, y: Float, z: Float, w: Float) { self.x = x; self.y = y; self.z = z; self.w = w }
+    public init (r: Float, g: Float, b: Float, a: Float) { self.x = r; self.y = g; self.z = b; self.w = a }
     public init (v: Float)                               { self.x = v; self.y = v; self.z = v; self.w = v }
+    public init ()                                       { self.x = 0; self.y = 0; self.z = 0; self.w = 0 }
     
     /* * * * * * * * * * * * * * * * * * * * *
      *  ARITHMETIC
@@ -82,5 +84,12 @@ public final class Vec4 : Vector {
     // TO-DO
     public func dot (other: Vec4) -> Float {
         return 0.0
+    }
+    
+    /* * * * * * * * * * * * * * * * * * * * *
+     *  DEBUG
+     * * * * * * * * * * * * * * * * * * * * */
+    public func toString () -> String {
+        return String("Vec4( x: \(x), y: \(y), z: \(z), w: \(w) )")
     }
 }
