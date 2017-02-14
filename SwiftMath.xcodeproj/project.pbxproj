@@ -23,6 +23,8 @@
 		CE7B165C1E53768D0016CB34 /* Build in Resources */ = {isa = PBXBuildFile; fileRef = CE7B165B1E53768D0016CB34 /* Build */; };
 		CE7B165D1E53768D0016CB34 /* Build in Resources */ = {isa = PBXBuildFile; fileRef = CE7B165B1E53768D0016CB34 /* Build */; };
 		CE7B165F1E5376DE0016CB34 /* SwiftMath.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE7B16291E5372320016CB34 /* SwiftMath.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CE7B16611E537F1E0016CB34 /* Mat4.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B16601E537F1E0016CB34 /* Mat4.swift */; };
+		CE7B16621E537F1E0016CB34 /* Mat4.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B16601E537F1E0016CB34 /* Mat4.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,7 @@
 		CE7B16461E53724E0016CB34 /* Vec4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vec4.swift; sourceTree = "<group>"; };
 		CE7B16471E53724E0016CB34 /* Vector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
 		CE7B165B1E53768D0016CB34 /* Build */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Build; sourceTree = "<group>"; };
+		CE7B16601E537F1E0016CB34 /* Mat4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mat4.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +109,7 @@
 			children = (
 				CE7B162C1E5372320016CB34 /* SwiftMath.h */,
 				CE7B16431E53724E0016CB34 /* Matrix.swift */,
+				CE7B16601E537F1E0016CB34 /* Mat4.swift */,
 				CE7B16441E53724E0016CB34 /* Vec2.swift */,
 				CE7B16451E53724E0016CB34 /* Vec3.swift */,
 				CE7B16461E53724E0016CB34 /* Vec4.swift */,
@@ -245,6 +249,7 @@
 				CE7B16501E53724E0016CB34 /* Vector.swift in Sources */,
 				CE7B164A1E53724E0016CB34 /* Vec2.swift in Sources */,
 				CE7B164E1E53724E0016CB34 /* Vec4.swift in Sources */,
+				CE7B16611E537F1E0016CB34 /* Mat4.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +262,7 @@
 				CE7B164F1E53724E0016CB34 /* Vec4.swift in Sources */,
 				CE7B164D1E53724E0016CB34 /* Vec3.swift in Sources */,
 				CE7B16511E53724E0016CB34 /* Vector.swift in Sources */,
+				CE7B16621E537F1E0016CB34 /* Mat4.swift in Sources */,
 				CE7B16381E5372320016CB34 /* SwiftMathTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

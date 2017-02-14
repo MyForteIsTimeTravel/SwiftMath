@@ -5,6 +5,10 @@
  *  Copyright © 2017 Baked Goods Studios. All rights reserved.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 public protocol Matrix {
+
+    /* * * * * * * * * * * * * * * * * * * * *
+     *  ARITHMETIC
+     * * * * * * * * * * * * * * * * * * * * */
     static func += (left: inout Self, right: Self)
     static func +  (left: Self, right: Self) -> Self
     
@@ -13,4 +17,14 @@ public protocol Matrix {
     
     static func *= (left: inout Self, right: Self)
     static func *  (left: Self, right: Self) -> Self
+    
+    /* * * * * * * * * * * * * * * * * * * * *
+     *  COMPARISON
+     * * * * * * * * * * * * * * * * * * * * */
+    static func == (left: Self, right: Self) -> Bool
+    static func != (left: Self, right: Self) -> Bool
+    
+    /* * * * * * * * * * * * * * * * * * * * *
+     *  CUSTOM / OTHER
+     * * * * * * * * * * * * * * * * * * * * */
 }

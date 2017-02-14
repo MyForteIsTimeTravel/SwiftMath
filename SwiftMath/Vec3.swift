@@ -22,20 +22,26 @@ public final class Vec3 : Vector {
     /* * * * * * * * * * * * * * * * * * * * *
      *  ARITHMETIC
      * * * * * * * * * * * * * * * * * * * * */
-    private func add (other: Vec3)                      { self.x += other.x; self.y += other.y; self.z += other.z }
+    private        func add (other: Vec3)                      { self.x += other.x; self.y += other.y; self.z += other.z }
     public static  func +=  (left: inout Vec3, right: Vec3)    { return left.add(other: right) }
     public static  func +   (left: Vec3, right: Vec3) -> Vec3  { return Vec3 (x: left.x + right.x, y: left.y + right.y, z: left.z + right.z) }
 
-    private func sub (other: Vec3)                      { self.x -= other.x; self.y -= other.y; self.z -= other.z }
+    private        func sub (other: Vec3)                      { self.x -= other.x; self.y -= other.y; self.z -= other.z }
     public static  func -=  (left: inout Vec3, right: Vec3)    { return left.sub(other: right) }
     public static  func -   (left: Vec3, right: Vec3) -> Vec3  { return Vec3 (x: left.x - right.x, y: left.y - right.y, z: left.z - right.z) }
 
-    private func mul (factor: Float)                    { self.x *= factor; self.y *= factor; self.z *= factor }
-    private func mul (other: Vec3)                      { self.x *= other.x; self.y *= other.y; self.z *= other.z }
+    private        func mul (factor: Float)                    { self.x *= factor; self.y *= factor; self.z *= factor }
+    private        func mul (other: Vec3)                      { self.x *= other.x; self.y *= other.y; self.z *= other.z }
     public static  func *=  (left: inout Vec3, right: Vec3)    { return left.mul(other: right) }
     public static  func *   (left: Vec3, right: Vec3) -> Vec3  { return Vec3 (x: left.x * right.x, y: left.y * right.y, z: left.z * right.z) }
 
-    private func div (factor: Float) { if (factor != 0) { self.x = self.x / factor; self.y = self.y / factor; self.z = self.z / factor } }
+    private        func div (factor: Float) { if (factor != 0) { self.x = self.x / factor; self.y = self.y / factor; self.z = self.z / factor } }
+    
+    /* * * * * * * * * * * * * * * * * * * * *
+     *  COMPARATORS
+     * * * * * * * * * * * * * * * * * * * * */
+    public static  func == (left: Vec3, right: Vec3) -> Bool { return ((left.x == right.x) && (left.y == right.y) && (left.z == right.z)) }
+    public static  func != (left: Vec3, right: Vec3) -> Bool { return ((left.x != right.x) || (left.y != right.y) || (left.z != right.z)) }
     
     /* * * * * * * * * * * * * * * * * * * * *
      *  VECTOR OPERATIONS
