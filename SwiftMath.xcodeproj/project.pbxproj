@@ -20,6 +20,9 @@
 		CE7B164F1E53724E0016CB34 /* Vec4.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B16461E53724E0016CB34 /* Vec4.swift */; };
 		CE7B16501E53724E0016CB34 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B16471E53724E0016CB34 /* Vector.swift */; };
 		CE7B16511E53724E0016CB34 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B16471E53724E0016CB34 /* Vector.swift */; };
+		CE7B165C1E53768D0016CB34 /* Build in Resources */ = {isa = PBXBuildFile; fileRef = CE7B165B1E53768D0016CB34 /* Build */; };
+		CE7B165D1E53768D0016CB34 /* Build in Resources */ = {isa = PBXBuildFile; fileRef = CE7B165B1E53768D0016CB34 /* Build */; };
+		CE7B165F1E5376DE0016CB34 /* SwiftMath.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE7B16291E5372320016CB34 /* SwiftMath.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +34,19 @@
 			remoteInfo = SwiftMath;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CE7B165E1E5376B90016CB34 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = Build;
+			dstSubfolderSpec = 0;
+			files = (
+				CE7B165F1E5376DE0016CB34 /* SwiftMath.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		CE7B16291E5372320016CB34 /* SwiftMath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftMath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +60,7 @@
 		CE7B16451E53724E0016CB34 /* Vec3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vec3.swift; sourceTree = "<group>"; };
 		CE7B16461E53724E0016CB34 /* Vec4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vec4.swift; sourceTree = "<group>"; };
 		CE7B16471E53724E0016CB34 /* Vector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
+		CE7B165B1E53768D0016CB34 /* Build */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Build; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +85,7 @@
 		CE7B161F1E5372320016CB34 = {
 			isa = PBXGroup;
 			children = (
+				CE7B165B1E53768D0016CB34 /* Build */,
 				CE7B162B1E5372320016CB34 /* SwiftMath */,
 				CE7B16361E5372320016CB34 /* SwiftMathTests */,
 				CE7B162A1E5372320016CB34 /* Products */,
@@ -128,6 +146,7 @@
 				CE7B16251E5372320016CB34 /* Frameworks */,
 				CE7B16261E5372320016CB34 /* Headers */,
 				CE7B16271E5372320016CB34 /* Resources */,
+				CE7B165E1E5376B90016CB34 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -202,6 +221,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE7B165C1E53768D0016CB34 /* Build in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +229,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE7B165D1E53768D0016CB34 /* Build in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,7 +388,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BakedGoods.SwiftMath;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -388,7 +409,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BakedGoods.SwiftMath;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
