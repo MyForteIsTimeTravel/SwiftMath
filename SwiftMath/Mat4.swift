@@ -28,6 +28,9 @@ public final class Mat4 : Matrix {
     
     public init () {}
     
+    /* * * * * * * * * * * * * * * * * * * * *
+     *  ARITHMETIC
+     * * * * * * * * * * * * * * * * * * * * */
     public static func += (left: inout Mat4, right: Mat4) {}
     public static func +  (left: Mat4, right: Mat4) -> Mat4 { return Mat4() }
     
@@ -37,6 +40,9 @@ public final class Mat4 : Matrix {
     public static func *= (left: inout Mat4, right: Mat4) {}
     public static func *  (left: Mat4, right: Mat4) -> Mat4 { return Mat4() }
     
+    /* * * * * * * * * * * * * * * * * * * * *
+     *  COMPARISON
+     * * * * * * * * * * * * * * * * * * * * */
     public static func == (left: Mat4, right: Mat4) -> Bool {
         return
             ((left.x1 == right.x1) && (left.x2 == right.x2) && (left.x3 == right.x3) && (left.x4 == right.x4)) &&
