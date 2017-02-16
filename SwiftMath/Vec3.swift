@@ -11,11 +11,9 @@ public final class Vec3 : Vector {
     public var x: Float = 0;
     public var y: Float = 0;
     public var z: Float = 0;
-    
-    // Alias
-    public func r () -> Float { return x }
-    public func g () -> Float { return y }
-    public func b () -> Float { return z }
+    public var r: Float { return x }
+    public var g: Float { return y }
+    public var b: Float { return z }
     
     public init (x: Float, y: Float, z: Float) { self.x = x; self.y = y; self.z = z }
     public init (r: Float, g: Float, b: Float) { self.x = r; self.y = g; self.z = b }

@@ -12,12 +12,10 @@ public final class Vec4 : Vector {
     public var y: Float = 0;
     public var z: Float = 0;
     public var w: Float = 0;
-    
-    // Alias
-    public func r () -> Float { return x }
-    public func g () -> Float { return y }
-    public func b () -> Float { return z }
-    public func a () -> Float { return w }
+    public var r: Float { return x }
+    public var g: Float { return y }
+    public var b: Float { return z }
+    public var a: Float { return w }
     
     public init (x: Float, y: Float, z: Float, w: Float) { self.x = x; self.y = y; self.z = z; self.w = w }
     public init (r: Float, g: Float, b: Float, a: Float) { self.x = r; self.y = g; self.z = b; self.w = a }
@@ -72,10 +70,11 @@ public final class Vec4 : Vector {
     
     // TO-DO
     public func cross (other: Vec4) -> Vec4 {
-        return Vec3 (
+        return Vec4 (
             x: 0.0,
             y: 0.0,
-            z: 0.0
+            z: 0.0,
+            w: 0.0
         )
     }
     

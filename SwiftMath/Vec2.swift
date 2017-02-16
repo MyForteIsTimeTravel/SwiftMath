@@ -10,13 +10,14 @@ import GLKit
 public final class Vec2 : Vector {
     public var x: Float = 0;
     public var y: Float = 0;
-    
-    // Alias
-    public func r () -> Float { return x }
-    public func g () -> Float { return y }
+    public var r: Float { return x }
+    public var g: Float { return y }
+    public var u: Float { return x }
+    public var v: Float { return y }
     
     public init (x: Float, y: Float) { self.x = x; self.y = y }
     public init (r: Float, g: Float) { self.x = r; self.y = g }
+    public init (u: Float, v: Float) { self.x = r; self.y = g }
     public init (v: Float)           { self.x = v; self.y = v }
     public init (v: Vec2)            { self.x = v.x; self.y = v.y }
     public init ()                   { self.x = 0; self.y = 0 }
@@ -63,16 +64,15 @@ public final class Vec2 : Vector {
     }
     
     // TO-DO
-    public func cross (other: Vec3) -> Vec3 {
-        return Vec3 (
+    public func cross (other: Vec2) -> Vec2 {
+        return Vec2 (
             x: 0.0,
-            y: 0.0,
-            z: 0.0
+            y: 0.0
         )
     }
     
     // TO-DO
-    public func dot (other: Vec3) -> Float {
+    public func dot (other: Vec2) -> Float {
         return 0.0
     }
     
