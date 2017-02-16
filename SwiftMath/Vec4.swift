@@ -64,7 +64,7 @@ public final class Vec4 : Vector {
     
     public var magnitude: Float {
         return sqrt(
-            (self.x * self.x) + (self.y * self.y) + (self.z * self.z)
+            (self.x * self.x) + (self.y * self.y) + (self.z * self.z) + (self.w * self.w)
         )
     }
     
