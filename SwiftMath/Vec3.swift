@@ -5,6 +5,7 @@
  *  Copyright © 2017 Baked Goods Studios. All rights reserved.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 import Foundation
+import GLKit
 
 public final class Vec3 : Vector {
     public var x: Float = 0;
@@ -19,6 +20,7 @@ public final class Vec3 : Vector {
     public init (x: Float, y: Float, z: Float) { self.x = x; self.y = y; self.z = z }
     public init (r: Float, g: Float, b: Float) { self.x = r; self.y = g; self.z = b }
     public init (v: Float)                     { self.x = v; self.y = v; self.z = v }
+    public init (v: Vec3)                      { self.x = v.x; self.y = v.y; self.z = v.z }
     public init ()                             { self.x = 0; self.y = 0; self.z = 0 }
     
     /* * * * * * * * * * * * * * * * * * * * *
@@ -48,22 +50,20 @@ public final class Vec3 : Vector {
     /* * * * * * * * * * * * * * * * * * * * *
      *  VECTOR OPERATIONS
      * * * * * * * * * * * * * * * * * * * * */
-    public func normalise () -> Vec3 {
-        let mag = magnitude()
+    public var normalised: Vec3 {
+        let mag = magnitude
         let new = Vec3(v: 0)
         if (mag != 0) {
-            new.x = self.x / mag
-            new.y = self.y / mag
-            new.z = self.z / mag
+            new.x = self.x.divided(by: mag)
+            new.y = self.y.divided(by: mag)
+            new.z = self.z.divided(by: mag)
         }
         return new
     }
     
-    public func magnitude () -> Float {
+    public var magnitude: Float {
         return sqrt(
-            (self.x * self.x) +
-            (self.y * self.y) +
-            (self.z * self.z)
+            (self.x * self.x) + (self.y * self.y) + (self.z * self.z)
         )
     }
     
@@ -82,9 +82,9 @@ public final class Vec3 : Vector {
     }
     
     /* * * * * * * * * * * * * * * * * * * * *
-     *  DEBUG
+     *  DEBUG / UTILITY
      * * * * * * * * * * * * * * * * * * * * */
-    public func toString () -> String {
-        return String("Vec3( x: \(x), y: \(y), z: \(z) )")
-    }
+    public var asGLKVector: GLKVector3 { return GLKVector3Make (x, y, z) }
+    public var string: (Float, Float, Float) { return (x, y, z) }
+    
 }

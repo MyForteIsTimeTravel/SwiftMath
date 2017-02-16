@@ -5,6 +5,7 @@
  *  Copyright © 2017 Baked Goods Studios. All rights reserved.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 import Foundation
+import GLKit
 
 public final class Vec4 : Vector {
     public var x: Float = 0;
@@ -21,6 +22,7 @@ public final class Vec4 : Vector {
     public init (x: Float, y: Float, z: Float, w: Float) { self.x = x; self.y = y; self.z = z; self.w = w }
     public init (r: Float, g: Float, b: Float, a: Float) { self.x = r; self.y = g; self.z = b; self.w = a }
     public init (v: Float)                               { self.x = v; self.y = v; self.z = v; self.w = v }
+    public init (v: Vec4)                                { self.x = v.x; self.y = v.y; self.z = v.z; self.w = v.w }
     public init ()                                       { self.x = 0; self.y = 0; self.z = 0; self.w = 0 }
     
     /* * * * * * * * * * * * * * * * * * * * *
@@ -50,34 +52,30 @@ public final class Vec4 : Vector {
     /* * * * * * * * * * * * * * * * * * * * *
      *  VECTOR OPERATIONS
      * * * * * * * * * * * * * * * * * * * * */
-    public func normalise () -> Vec4 {
-        let mag = magnitude()
+    public var normalised: Vec4 {
+        let mag = magnitude
         let new = Vec4(v: 0)
         if (mag != 0) {
-            new.x = self.x / mag
-            new.y = self.y / mag
-            new.z = self.z / mag
-            new.w = self.w / mag
+            new.x = self.x.divided(by: mag)
+            new.y = self.y.divided(by: mag)
+            new.z = self.z.divided(by: mag)
+            new.w = self.w.divided(by: mag)
         }
         return new
     }
     
-    public func magnitude () -> Float {
+    public var magnitude: Float {
         return sqrt(
-            (self.x * self.x) +
-            (self.y * self.y) +
-            (self.z * self.z) +
-            (self.w * self.w)
+            (self.x * self.x) + (self.y * self.y) + (self.z * self.z)
         )
     }
     
     // TO-DO
     public func cross (other: Vec4) -> Vec4 {
-        return Vec4(
+        return Vec3 (
             x: 0.0,
             y: 0.0,
-            z: 0.0,
-            w: 0.0
+            z: 0.0
         )
     }
     
@@ -87,9 +85,8 @@ public final class Vec4 : Vector {
     }
     
     /* * * * * * * * * * * * * * * * * * * * *
-     *  DEBUG
+     *  DEBUG / UTILITY
      * * * * * * * * * * * * * * * * * * * * */
-    public func toString () -> String {
-        return String("Vec4( x: \(x), y: \(y), z: \(z), w: \(w) )")
-    }
+    public var asGLKVector: GLKVector4 { return GLKVector4Make (x, y, z, w) }
+    public var string: (Float, Float, Float, Float) { return (x, y, z, w) }
 }
