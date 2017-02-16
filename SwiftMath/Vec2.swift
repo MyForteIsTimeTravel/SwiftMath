@@ -5,18 +5,21 @@
  *  Copyright © 2017 Baked Goods Studios. All rights reserved.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 import Foundation
+import GLKit
 
 public final class Vec2 : Vector {
     public var x: Float = 0;
     public var y: Float = 0;
-    
-    // Alias
-    public func r () -> Float { return x }
-    public func g () -> Float { return y }
+    public var r: Float { return x }
+    public var g: Float { return y }
+    public var u: Float { return x }
+    public var v: Float { return y }
     
     public init (x: Float, y: Float) { self.x = x; self.y = y }
     public init (r: Float, g: Float) { self.x = r; self.y = g }
+    public init (u: Float, v: Float) { self.x = r; self.y = g }
     public init (v: Float)           { self.x = v; self.y = v }
+    public init (v: Vec2)            { self.x = v.x; self.y = v.y }
     public init ()                   { self.x = 0; self.y = 0 }
     
     /* * * * * * * * * * * * * * * * * * * * *
@@ -46,21 +49,18 @@ public final class Vec2 : Vector {
     /* * * * * * * * * * * * * * * * * * * * *
      *  VECTOR OPERATIONS
      * * * * * * * * * * * * * * * * * * * * */
-    public func normalise () -> Vec2 {
-        let mag = magnitude()
+    public var normalised: Vec2 {
+        let mag = magnitude
         let new = Vec2(v: 0)
         if (mag != 0) {
-            new.x = self.x / mag
-            new.y = self.y / mag
+            new.x = self.x.divided(by: mag)
+            new.y = self.y.divided(by: mag)
         }
         return new
     }
     
-    public func magnitude () -> Float {
-        return sqrt(
-            (self.x * self.x) +
-            (self.y * self.y)
-        )
+    public var magnitude: Float {
+        return sqrt((self.x * self.x) + (self.y * self.y))
     }
     
     // TO-DO
@@ -77,9 +77,8 @@ public final class Vec2 : Vector {
     }
     
     /* * * * * * * * * * * * * * * * * * * * *
-     *  DEBUG
+     *  DEBUG / UTILITY
      * * * * * * * * * * * * * * * * * * * * */
-    public func toString () -> String {
-        return String("Vec2( x: \(x), y: \(y) )")
-    }
+    public var asGLKVector: GLKVector2 { return GLKVector2Make (x, y) }
+    public var string: (Float, Float) { return (x, y) }
 }
