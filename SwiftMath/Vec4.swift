@@ -71,7 +71,7 @@ public final class Vec4 : Vector {
     // TO-DO
     public func cross (other: Vec4) -> Vec4 {
         return Vec4 (
-            x: 0.0,
+            x: (self.y * other.z) - (other.y * self.z),
             y: 0.0,
             z: 0.0,
             w: 0.0

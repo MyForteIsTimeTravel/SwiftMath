@@ -64,6 +64,7 @@ public final class Vec3 : Vector {
     public var length: Float {
         return magnitude
     }
+
     
     public func cross (other: Vec3) -> Vec3 {
         return Vec3 (
