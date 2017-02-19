@@ -24,18 +24,16 @@ public final class Vec3 : Vector {
     /* * * * * * * * * * * * * * * * * * * * *
      *  ARITHMETIC
      * * * * * * * * * * * * * * * * * * * * */
-    private        func add (other: Vec3)                      { self.x += other.x; self.y += other.y; self.z += other.z }
-    public static  func +=  (left: inout Vec3, right: Vec3)    { return left.add(other: right) }
+    public static  func +=  (left: inout Vec3, right: Vec3)    { return left = left + right }
     public static  func +   (left: Vec3, right: Vec3) -> Vec3  { return Vec3 (x: left.x + right.x, y: left.y + right.y, z: left.z + right.z) }
 
-    private        func sub (other: Vec3)                      { self.x -= other.x; self.y -= other.y; self.z -= other.z }
-    public static  func -=  (left: inout Vec3, right: Vec3)    { return left.sub(other: right) }
+    public static  func -=  (left: inout Vec3, right: Vec3)    { return left = left - right }
     public static  func -   (left: Vec3, right: Vec3) -> Vec3  { return Vec3 (x: left.x - right.x, y: left.y - right.y, z: left.z - right.z) }
-
-    private        func mul (factor: Float)                    { self.x *= factor; self.y *= factor; self.z *= factor }
-    private        func mul (other: Vec3)                      { self.x *= other.x; self.y *= other.y; self.z *= other.z }
-    public static  func *=  (left: inout Vec3, right: Vec3)    { return left.mul(other: right) }
-    public static  func *   (left: Vec3, right: Vec3) -> Vec3  { return Vec3 (x: left.x * right.x, y: left.y * right.y, z: left.z * right.z) }
+    
+    public static  func *=  (left: inout Vec3, right: Vec3)     { return left = left * right }
+    public static  func *   (left: Vec3,  right: Vec3)  -> Vec3 { return Vec3 (x: left.x * right.x, y: left.y * right.y, z: left.z * right.z) }
+    public static  func *   (left: Vec3,  right: Float) -> Vec3 { return Vec3 (x: left.x * right, y: left.y * right, z: left.z * right) }
+    public static  func *   (left: Float, right: Vec3 ) -> Vec3 { return Vec3 (x: right.x * left, y: right.y * left, z: right.z * left) }
 
     private        func div (factor: Float) { if (factor != 0) { self.x = self.x / factor; self.y = self.y / factor; self.z = self.z / factor } }
     
@@ -60,17 +58,18 @@ public final class Vec3 : Vector {
     }
     
     public var magnitude: Float {
-        return sqrt(
-            (self.x * self.x) + (self.y * self.y) + (self.z * self.z)
-        )
+        return sqrt((self.x * self.x) + (self.y * self.y) + (self.z * self.z))
     }
     
-    // TO-DO
+    public var length: Float {
+        return magnitude
+    }
+    
     public func cross (other: Vec3) -> Vec3 {
         return Vec3 (
-            x: 0.0,
-            y: 0.0,
-            z: 0.0
+            x: (self.y * other.z) - (other.y * self.z),
+            y: (self.z * other.x) - (other.z * self.x),
+            z: (self.x * other.y) - (other.x * self.y)
         )
     }
     

@@ -25,18 +25,16 @@ public final class Vec2 : Vector {
     /* * * * * * * * * * * * * * * * * * * * *
      *  ARITHMETIC OPERATIONS
      * * * * * * * * * * * * * * * * * * * * */
-    private        func add (other: Vec2)                      { self.x += other.x; self.y += other.y }
-    public  static func +=  (left: inout Vec2, right: Vec2)    { return left.add(other: right) }
+    public  static func +=  (left: inout Vec2, right: Vec2)    { return left = left + right }
     public  static func +   (left: Vec2, right: Vec2) -> Vec2  { return Vec2 (x: left.x + right.x, y: left.y + right.y) }
     
-    private        func sub (other: Vec2)                      { self.x -= other.x; self.y -= other.y }
-    public static  func -=  (left: inout Vec2, right: Vec2)    { return left.sub(other: right) }
+    public static  func -=  (left: inout Vec2, right: Vec2)    { return left = left - right }
     public static  func -   (left: Vec2, right: Vec2) -> Vec2  { return Vec2 (x: left.x - right.x, y: left.y - right.y) }
 
-    private        func mul (factor: Float)                    { self.x *= factor; self.y *= factor }
-    private        func mul (other: Vec2)                      { self.x *= other.x; self.y *= other.y }
-    public static  func *=  (left: inout Vec2, right: Vec2)    { return left.mul(other: right) }
-    public static  func *   (left: Vec2, right: Vec2) -> Vec2  { return Vec2 (x: left.x * right.x, y: left.y * right.y) }
+    public static  func *=  (left: inout Vec2, right: Vec2)     { return left = left * right }
+    public static  func *   (left: Vec2,  right: Vec2 ) -> Vec2 { return Vec2 (x: left.x * right.x, y: left.y * right.y) }
+    public static  func *   (left: Vec2,  right: Float) -> Vec2 { return Vec2 (x: left.x * right, y: left.y * right) }
+    public static  func *   (left: Float, right: Vec2 ) -> Vec2 { return Vec2 (x: right.x * left, y: right.y * left) }
 
     private        func div (factor: Float) { if (factor != 0) { self.x = self.x / factor; self.y = self.y / factor } }
     
@@ -61,6 +59,10 @@ public final class Vec2 : Vector {
     
     public var magnitude: Float {
         return sqrt((self.x * self.x) + (self.y * self.y))
+    }
+    
+    public var length: Float {
+        return magnitude
     }
     
     // TO-DO
