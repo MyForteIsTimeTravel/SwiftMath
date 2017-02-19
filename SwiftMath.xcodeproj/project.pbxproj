@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6234344B1E53B16800460B18 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6234344A1E53B16800460B18 /* Random.swift */; };
+		6267B9241E59EAEE00D765AB /* Mat3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6267B9231E59EAEE00D765AB /* Mat3.swift */; };
+		6267B9261E59EC1100D765AB /* Mat2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6267B9251E59EC1100D765AB /* Mat2.swift */; };
 		CE7B16331E5372320016CB34 /* SwiftMath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7B16291E5372320016CB34 /* SwiftMath.framework */; };
 		CE7B16381E5372320016CB34 /* SwiftMathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B16371E5372320016CB34 /* SwiftMathTests.swift */; };
 		CE7B163A1E5372320016CB34 /* SwiftMath.h in Headers */ = {isa = PBXBuildFile; fileRef = CE7B162C1E5372320016CB34 /* SwiftMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -53,6 +55,8 @@
 
 /* Begin PBXFileReference section */
 		6234344A1E53B16800460B18 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
+		6267B9231E59EAEE00D765AB /* Mat3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mat3.swift; sourceTree = "<group>"; };
+		6267B9251E59EC1100D765AB /* Mat2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mat2.swift; sourceTree = "<group>"; };
 		CE7B16291E5372320016CB34 /* SwiftMath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftMath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7B162C1E5372320016CB34 /* SwiftMath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftMath.h; sourceTree = "<group>"; };
 		CE7B162D1E5372320016CB34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -111,6 +115,8 @@
 			children = (
 				CE7B162C1E5372320016CB34 /* SwiftMath.h */,
 				CE7B16431E53724E0016CB34 /* Matrix.swift */,
+				6267B9231E59EAEE00D765AB /* Mat3.swift */,
+				6267B9251E59EC1100D765AB /* Mat2.swift */,
 				CE7B16601E537F1E0016CB34 /* Mat4.swift */,
 				CE7B16441E53724E0016CB34 /* Vec2.swift */,
 				CE7B16451E53724E0016CB34 /* Vec3.swift */,
@@ -249,6 +255,8 @@
 			files = (
 				CE7B16481E53724E0016CB34 /* Matrix.swift in Sources */,
 				CE7B164C1E53724E0016CB34 /* Vec3.swift in Sources */,
+				6267B9261E59EC1100D765AB /* Mat2.swift in Sources */,
+				6267B9241E59EAEE00D765AB /* Mat3.swift in Sources */,
 				CE7B16501E53724E0016CB34 /* Vector.swift in Sources */,
 				CE7B164A1E53724E0016CB34 /* Vec2.swift in Sources */,
 				CE7B164E1E53724E0016CB34 /* Vec4.swift in Sources */,

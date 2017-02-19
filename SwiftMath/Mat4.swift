@@ -9,10 +9,10 @@ public final class Mat4 : Matrix {
     
     // Initialise as Identity matrix
     private var
-        x1 = 1, x2 = 0, x3 = 0, x4 = 0,
-        y1 = 0, y2 = 1, y3 = 0, y4 = 0,
-        z1 = 0, z2 = 0, z3 = 1, z4 = 0,
-        w1 = 0, w2 = 0, w3 = 0, w4 = 1;
+        x1: Float = 1.0, x2: Float = 0.0, x3: Float = 0.0, x4: Float = 0.0,
+        y1: Float = 0.0, y2: Float = 1.0, y3: Float = 0.0, y4: Float = 0.0,
+        z1: Float = 0.0, z2: Float = 0.0, z3: Float = 1.0, z4: Float = 0.0,
+        w1: Float = 0.0, w2: Float = 0.0, w3: Float = 0.0, w4: Float = 1.0;
     
     public init () {}
     
@@ -97,7 +97,26 @@ public final class Mat4 : Matrix {
         result.w3 = left.w3 * right.w3;
         result.w4 = left.w4 * right.w4;
         
-        return result }
+        return result
+    }
+    
+    public static func *  (left: Mat4, right: Vec4) -> Vec4 {
+        return Vec4 (
+            x: right.x * left.x1,
+            y: right.y * left.y2,
+            z: right.z * left.z3,
+            w: right.w * left.w4
+        )
+    }
+    
+    public static func *  (left: Vec4, right: Mat4) -> Vec4 {
+        return Vec4 (
+            x: left.x * right.x1,
+            y: left.y * right.y2,
+            z: left.z * right.z3,
+            w: left.w * right.w4
+        )
+    }
     
     /* * * * * * * * * * * * * * * * * * * * *
      *  COMPARISON
