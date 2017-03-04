@@ -25,16 +25,16 @@ public final class Vec2 : Vector {
     /* * * * * * * * * * * * * * * * * * * * *
      *  ARITHMETIC OPERATIONS
      * * * * * * * * * * * * * * * * * * * * */
-    public  static func +=  (left: inout Vec2, right: Vec2)    { return left = left + right }
-    public  static func +   (left: Vec2, right: Vec2) -> Vec2  { return Vec2 (x: left.x + right.x, y: left.y + right.y) }
+    public static func +=  (left: inout Vec2, right: Vec2)      { return left = left + right }
+    public static func +   (left: Vec2, right: Vec2) -> Vec2    { return Vec2 (x: left.x + right.x, y: left.y + right.y) }
     
-    public static  func -=  (left: inout Vec2, right: Vec2)    { return left = left - right }
-    public static  func -   (left: Vec2, right: Vec2) -> Vec2  { return Vec2 (x: left.x - right.x, y: left.y - right.y) }
+    public static  func -=  (left: inout Vec2, right: Vec2)     { return left = left - right }
+    public static  func -   (left: Vec2, right: Vec2) -> Vec2   { return Vec2 (x: left.x - right.x, y: left.y - right.y) }
 
     public static  func *=  (left: inout Vec2, right: Vec2)     { return left = left * right }
-    public static  func *   (left: Vec2,  right: Vec2 ) -> Vec2 { return Vec2 (x: left.x * right.x, y: left.y * right.y) }
-    public static  func *   (left: Vec2,  right: Float) -> Vec2 { return Vec2 (x: left.x * right, y: left.y * right) }
-    public static  func *   (left: Float, right: Vec2 ) -> Vec2 { return Vec2 (x: right.x * left, y: right.y * left) }
+    public static  func *   (left: Vec2,  right: Vec2 ) -> Vec2 { return Vec2 (x: left.x  * right.x, y: left.y  * right.y) }
+    public static  func *   (left: Vec2,  right: Float) -> Vec2 { return Vec2 (x: left.x  * right,   y: left.y  * right) }
+    public static  func *   (left: Float, right: Vec2 ) -> Vec2 { return Vec2 (x: right.x * left,    y: right.y * left) }
 
     private        func div (factor: Float) { if (factor != 0) { self.x = self.x / factor; self.y = self.y / factor } }
     
@@ -65,7 +65,7 @@ public final class Vec2 : Vector {
         return magnitude
     }
     
-    // TO-DO
+    // Cross only exists on 3 and 7 dimension vectors
     public func cross (other: Vec2) -> Vec2 {
         return Vec2 (
             x: 0.0,
@@ -73,14 +73,16 @@ public final class Vec2 : Vector {
         )
     }
     
-    // TO-DO
     public func dot (other: Vec2) -> Float {
-        return 0.0
+        return zip  (self.array, other.array)
+            .map    (*)
+            .reduce (0, {$0 + $1})
     }
-    
+
     /* * * * * * * * * * * * * * * * * * * * *
      *  DEBUG / UTILITY
      * * * * * * * * * * * * * * * * * * * * */
     public var asGLKVector: GLKVector2 { return GLKVector2Make (x, y) }
     public var string: (Float, Float) { return (x, y) }
+    public var array: [Float] { return [self.x, self.y]}
 }

@@ -4,6 +4,8 @@
  *  Created by Ryan Needham on 14/02/2017.
  *  Copyright © 2017 Baked Goods Studios. All rights reserved.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+import GLKit
+
 protocol Vector {
 
     /* * * * * * * * * * * * * * * * * * * * *
@@ -27,11 +29,15 @@ protocol Vector {
 
     /* * * * * * * * * * * * * * * * * * * * *
      *  CUSTOM / OTHER
+     *  note: Cross only exists on 3 and 7 dimension vectors
      * * * * * * * * * * * * * * * * * * * * */
     func dot   (other: Self) -> Float
     func cross (other: Self) -> Self
     
     /* * * * * * * * * * * * * * * * * * * * *
-     *  CUSTOM / OTHER
+     *  DEBUG / UTIL
      * * * * * * * * * * * * * * * * * * * * */
+    // as GLK Vector
+    // as String
+    // as Array
 }

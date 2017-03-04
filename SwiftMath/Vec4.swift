@@ -26,24 +26,24 @@ public final class Vec4 : Vector {
     /* * * * * * * * * * * * * * * * * * * * *
      *  ARITHMETIC
      * * * * * * * * * * * * * * * * * * * * */
-    public static  func +=  (left: inout Vec4, right: Vec4)    { return left = left + right }
-    public static  func +   (left: Vec4, right: Vec4) -> Vec4  { return Vec4 (x: left.x + right.x, y: left.y + right.y, z: left.z + right.z, w: left.w + right.w) }
+    public static func +=  (left: inout Vec4, right: Vec4)     { return left = left + right }
+    public static func +   (left: Vec4, right: Vec4) -> Vec4   { return Vec4 (x: left.x + right.x, y: left.y + right.y, z: left.z + right.z, w: left.w + right.w) }
 
-    public static  func -=  (left: inout Vec4, right: Vec4)    { return left = left - right }
-    public static  func -   (left: Vec4, right: Vec4) -> Vec4  { return Vec4 (x: left.x - right.x, y: left.y - right.y, z: left.z - right.z, w: left.w - right.w) }
+    public static func -=  (left: inout Vec4, right: Vec4)     { return left = left - right }
+    public static func -   (left: Vec4, right: Vec4) -> Vec4   { return Vec4 (x: left.x - right.x, y: left.y - right.y, z: left.z - right.z, w: left.w - right.w) }
 
-    public static  func *=  (left: inout Vec4, right: Vec4)     { return left = left * right }
-    public static  func *   (left: Vec4,  right: Vec4)  -> Vec4 { return Vec4 (x: left.x * right.x, y: left.y * right.y, z: left.z * right.z, w: left.w * right.w) }
-    public static  func *   (left: Vec4,  right: Float) -> Vec4 { return Vec4 (x: left.x * right, y: left.y * right, z: left.z * right, w: left.w * right) }
-    public static  func *   (left: Float, right: Vec4 ) -> Vec4 { return Vec4 (x: right.x * left, y: right.y * left, z: right.z * left, w: right.w * left) }
+    public static func *=  (left: inout Vec4, right: Vec4)     { return left = left * right }
+    public static func *   (left: Vec4,  right: Vec4)  -> Vec4 { return Vec4 (x: left.x  * right.x, y: left.y  * right.y, z: left.z  * right.z, w: left.w  * right.w) }
+    public static func *   (left: Vec4,  right: Float) -> Vec4 { return Vec4 (x: left.x  * right,   y: left.y  * right,   z: left.z  * right,   w: left.w  * right) }
+    public static func *   (left: Float, right: Vec4 ) -> Vec4 { return Vec4 (x: right.x * left,    y: right.y * left,    z: right.z * left,    w: right.w * left) }
     
-    private        func div (factor: Float) { if (factor != 0) { self.x = self.x / factor; self.y = self.y / factor; self.z = self.z / factor; self.w = self.w / factor } }
+    private       func div (factor: Float) { if (factor != 0) { self.x = self.x / factor; self.y = self.y / factor; self.z = self.z / factor; self.w = self.w / factor } }
 
     /* * * * * * * * * * * * * * * * * * * * *
      *  COMPARATORS
      * * * * * * * * * * * * * * * * * * * * */
-    public static  func == (left: Vec4, right: Vec4) -> Bool { return ((left.x == right.x) && (left.y == right.y) && (left.z == right.z) && (left.w == right.w)) }
-    public static  func != (left: Vec4, right: Vec4) -> Bool { return ((left.x != right.x) || (left.y != right.y) || (left.z != right.z) || (left.w != right.w)) }
+    public static func == (left: Vec4, right: Vec4) -> Bool { return ((left.x == right.x) && (left.y == right.y) && (left.z == right.z) && (left.w == right.w)) }
+    public static func != (left: Vec4, right: Vec4) -> Bool { return ((left.x != right.x) || (left.y != right.y) || (left.z != right.z) || (left.w != right.w)) }
     
     /* * * * * * * * * * * * * * * * * * * * *
      *  VECTOR OPERATIONS
@@ -68,19 +68,20 @@ public final class Vec4 : Vector {
         return magnitude
     }
     
-    // TO-DO
+    // Cross only exists on 3 and 7 dimension vectors
     public func cross (other: Vec4) -> Vec4 {
         return Vec4 (
-            x: (self.y * other.z) - (other.y * self.z),
+            x: 0.0,
             y: 0.0,
             z: 0.0,
             w: 0.0
         )
     }
     
-    // TO-DO
     public func dot (other: Vec4) -> Float {
-        return 0.0
+        return zip  (self.array, other.array)
+            .map    (*)
+            .reduce (0, {$0 + $1})
     }
     
     /* * * * * * * * * * * * * * * * * * * * *
@@ -88,4 +89,5 @@ public final class Vec4 : Vector {
      * * * * * * * * * * * * * * * * * * * * */
     public var asGLKVector: GLKVector4 { return GLKVector4Make (x, y, z, w) }
     public var string: (Float, Float, Float, Float) { return (x, y, z, w) }
+    public var array: [Float] { return [self.x, self.y, self.z, self.w] }
 }

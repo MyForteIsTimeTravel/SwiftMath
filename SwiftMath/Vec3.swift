@@ -24,24 +24,24 @@ public final class Vec3 : Vector {
     /* * * * * * * * * * * * * * * * * * * * *
      *  ARITHMETIC
      * * * * * * * * * * * * * * * * * * * * */
-    public static  func +=  (left: inout Vec3, right: Vec3)    { return left = left + right }
-    public static  func +   (left: Vec3, right: Vec3) -> Vec3  { return Vec3 (x: left.x + right.x, y: left.y + right.y, z: left.z + right.z) }
+    public static func +=  (left: inout Vec3, right: Vec3)     { return left = left + right }
+    public static func +   (left: Vec3, right: Vec3) -> Vec3   { return Vec3 (x: left.x + right.x, y: left.y + right.y, z: left.z + right.z) }
 
-    public static  func -=  (left: inout Vec3, right: Vec3)    { return left = left - right }
-    public static  func -   (left: Vec3, right: Vec3) -> Vec3  { return Vec3 (x: left.x - right.x, y: left.y - right.y, z: left.z - right.z) }
+    public static func -=  (left: inout Vec3, right: Vec3)     { return left = left - right }
+    public static func -   (left: Vec3, right: Vec3) -> Vec3   { return Vec3 (x: left.x - right.x, y: left.y - right.y, z: left.z - right.z) }
     
-    public static  func *=  (left: inout Vec3, right: Vec3)     { return left = left * right }
-    public static  func *   (left: Vec3,  right: Vec3)  -> Vec3 { return Vec3 (x: left.x * right.x, y: left.y * right.y, z: left.z * right.z) }
-    public static  func *   (left: Vec3,  right: Float) -> Vec3 { return Vec3 (x: left.x * right, y: left.y * right, z: left.z * right) }
-    public static  func *   (left: Float, right: Vec3 ) -> Vec3 { return Vec3 (x: right.x * left, y: right.y * left, z: right.z * left) }
+    public static func *=  (left: inout Vec3, right: Vec3)     { return left = left * right }
+    public static func *   (left: Vec3,  right: Vec3)  -> Vec3 { return Vec3 (x: left.x * right.x, y: left.y  * right.y, z: left.z  * right.z) }
+    public static func *   (left: Vec3,  right: Float) -> Vec3 { return Vec3 (x: left.x * right,   y: left.y  * right,   z: left.z  * right) }
+    public static func *   (left: Float, right: Vec3 ) -> Vec3 { return Vec3 (x: right.x * left,   y: right.y * left,    z: right.z * left) }
 
-    private        func div (factor: Float) { if (factor != 0) { self.x = self.x / factor; self.y = self.y / factor; self.z = self.z / factor } }
+    private       func div (factor: Float) { if (factor != 0) { self.x = self.x / factor; self.y = self.y / factor; self.z = self.z / factor } }
     
     /* * * * * * * * * * * * * * * * * * * * *
      *  COMPARATORS
      * * * * * * * * * * * * * * * * * * * * */
-    public static  func == (left: Vec3, right: Vec3) -> Bool { return ((left.x == right.x) && (left.y == right.y) && (left.z == right.z)) }
-    public static  func != (left: Vec3, right: Vec3) -> Bool { return ((left.x != right.x) || (left.y != right.y) || (left.z != right.z)) }
+    public static func == (left: Vec3, right: Vec3) -> Bool { return ((left.x == right.x) && (left.y == right.y) && (left.z == right.z)) }
+    public static func != (left: Vec3, right: Vec3) -> Bool { return ((left.x != right.x) || (left.y != right.y) || (left.z != right.z)) }
     
     /* * * * * * * * * * * * * * * * * * * * *
      *  VECTOR OPERATIONS
@@ -65,7 +65,6 @@ public final class Vec3 : Vector {
         return magnitude
     }
 
-    
     public func cross (other: Vec3) -> Vec3 {
         return Vec3 (
             x: (self.y * other.z) - (other.y * self.z),
@@ -74,9 +73,10 @@ public final class Vec3 : Vector {
         )
     }
     
-    // TO-DO
     public func dot (other: Vec3) -> Float {
-        return 0.0
+        return zip  (self.array, other.array)
+            .map    (*)
+            .reduce (0, {$0 + $1})
     }
     
     /* * * * * * * * * * * * * * * * * * * * *
@@ -84,5 +84,6 @@ public final class Vec3 : Vector {
      * * * * * * * * * * * * * * * * * * * * */
     public var asGLKVector: GLKVector3 { return GLKVector3Make (x, y, z) }
     public var string: (Float, Float, Float) { return (x, y, z) }
+    public var array: [Float] { return [self.x, self.y, self.z] }
     
 }
