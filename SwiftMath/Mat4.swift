@@ -2,7 +2,7 @@
  *  Vec2.swift
  *
  *  Created by Ryan Needham on 14/02/2017.
- *  Copyright © 2017 Baked Goods Studios. All rights reserved.
+ *  Copyr © 2017 Baked Goods Studios. All rs reserved.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 public final class Mat4 : Matrix {
@@ -19,70 +19,70 @@ public final class Mat4 : Matrix {
     /* * * * * * * * * * * * * * * * * * * * *
      *  ARITHMETIC
      * * * * * * * * * * * * * * * * * * * * */
-    public static func += (left: inout Mat4, right: Mat4) { left = left + right }
-    public static func +  (left: Mat4, right: Mat4) -> Mat4 {
+    public static func += (l: inout Mat4, r: Mat4) { l = l + r }
+    public static func +  (l: Mat4, r: Mat4) -> Mat4 {
         let result = Mat4()
-        result.x = left.x + right.x;
-        result.y = left.y + right.y;
-        result.z = left.z + right.z;
-        result.w = left.w + right.w;
+        result.x = l.x + r.x;
+        result.y = l.y + r.y;
+        result.z = l.z + r.z;
+        result.w = l.w + r.w;
         return result
     }
     
-    public static func -= (left: inout Mat4, right: Mat4) { left = left - right }
-    public static func -  (left: Mat4, right: Mat4) -> Mat4 {
+    public static func -= (l: inout Mat4, r: Mat4) { l = l - r }
+    public static func -  (l: Mat4, r: Mat4) -> Mat4 {
         let result = Mat4()
-        result.x = left.x - right.x;
-        result.y = left.y - right.y;
-        result.z = left.z - right.z;
-        result.w = left.w - right.w;
+        result.x = l.x - r.x;
+        result.y = l.y - r.y;
+        result.z = l.z - r.z;
+        result.w = l.w - r.w;
         return result
     }
     
-    public static func *= (left: inout Mat4, right: Mat4) {}
-    public static func *  (left: Mat4, right: Mat4) -> Mat4 {
+    public static func *= (l: inout Mat4, r: Mat4) {}
+    public static func *  (l: Mat4, r: Mat4) -> Mat4 {
         let result = Mat4()
-        result.x = left.x * right.x;
-        result.y = left.y * right.y;
-        result.z = left.z * right.z;
-        result.w = left.w * right.w;
+        result.x = l.x * r.x;
+        result.y = l.y * r.y;
+        result.z = l.z * r.z;
+        result.w = l.w * r.w;
         return result
     }
     
-    public static func *  (left: Mat4, right: Vec4) -> Vec4 {
+    public static func *  (l: Mat4, r: Vec4) -> Vec4 {
         return Vec4 (
-            x: right.x * left.x.x,
-            y: right.y * left.y.y,
-            z: right.z * left.z.z,
-            w: right.w * left.w.w
+            x: r.x * l.x.x,
+            y: r.y * l.y.y,
+            z: r.z * l.z.z,
+            w: r.w * l.w.w
         )
     }
     
-    public static func *  (left: Vec4, right: Mat4) -> Vec4 {
+    public static func *  (l: Vec4, r: Mat4) -> Vec4 {
         return Vec4 (
-            x: left.x * right.x.x,
-            y: left.y * right.y.y,
-            z: left.z * right.z.z,
-            w: left.w * right.w.w
+            x: l.x * r.x.x,
+            y: l.y * r.y.y,
+            z: l.z * r.z.z,
+            w: l.w * r.w.w
         )
     }
     
     /* * * * * * * * * * * * * * * * * * * * *
      *  COMPARISON
      * * * * * * * * * * * * * * * * * * * * */
-    public static func == (left: Mat4, right: Mat4) -> Bool {
+    public static func == (l: Mat4, r: Mat4) -> Bool {
         return
-            (left.x == right.x) &&
-            (left.y == right.y) &&
-            (left.z == right.z) &&
-            (left.w == right.w)
+            (l.x == r.x) &&
+            (l.y == r.y) &&
+            (l.z == r.z) &&
+            (l.w == r.w)
     }
     
-    public static func != (left: Mat4, right: Mat4) -> Bool {
+    public static func != (l: Mat4, r: Mat4) -> Bool {
         return
-            (left.x != right.x) ||
-            (left.y != right.y) ||
-            (left.z != right.z) ||
-            (left.w != right.w)
+            (l.x != r.x) ||
+            (l.y != r.y) ||
+            (l.z != r.z) ||
+            (l.w != r.w)
     }
 }

@@ -2,7 +2,7 @@
  *  Vec3.swift
  *
  *  Created by Ryan Needham on 14/02/2017.
- *  Copyright © 2017 Baked Goods Studios. All rights reserved.
+ *  Copyr © 2017 Baked Goods Studios. All rs reserved.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 import Foundation
 import GLKit
@@ -24,41 +24,42 @@ public final class Vec3 : Vector {
     /* * * * * * * * * * * * * * * * * * * * *
      *  ARITHMETIC
      * * * * * * * * * * * * * * * * * * * * */
-    public static func +=  (left: inout Vec3, right: Vec3)     { return left = left + right }
-    public static func +   (left: Vec3, right: Vec3) -> Vec3   { return Vec3 (x: left.x + right.x, y: left.y + right.y, z: left.z + right.z) }
+    public static func +=  (l: inout Vec3, r: Vec3)     { return l = l + r }
+    public static func +   (l: Vec3, r: Vec3) -> Vec3   { return Vec3 (x: l.x + r.x, y: l.y + r.y, z: l.z + r.z) }
 
-    public static func -=  (left: inout Vec3, right: Vec3)     { return left = left - right }
-    public static func -   (left: Vec3, right: Vec3) -> Vec3   { return Vec3 (x: left.x - right.x, y: left.y - right.y, z: left.z - right.z) }
+    public static func -=  (l: inout Vec3, r: Vec3)     { return l = l - r }
+    public static func -   (l: Vec3, r: Vec3) -> Vec3   { return Vec3 (x: l.x - r.x, y: l.y - r.y, z: l.z - r.z) }
     
-    public static func *=  (left: inout Vec3, right: Vec3)     { return left = left * right }
-    public static func *   (left: Vec3,  right: Vec3)  -> Vec3 { return Vec3 (x: left.x * right.x, y: left.y  * right.y, z: left.z  * right.z) }
-    public static func *   (left: Vec3,  right: Float) -> Vec3 { return Vec3 (x: left.x * right,   y: left.y  * right,   z: left.z  * right) }
-    public static func *   (left: Float, right: Vec3 ) -> Vec3 { return Vec3 (x: right.x * left,   y: right.y * left,    z: right.z * left) }
+    public static func *=  (l: inout Vec3, r: Vec3)     { return l = l * r }
+    public static func *   (l: Vec3,  r: Vec3)  -> Vec3 { return Vec3 (x: l.x * r.x, y: l.y * r.y, z: l.z * r.z) }
+    public static func *   (l: Vec3,  r: Float) -> Vec3 { return Vec3 (x: l.x * r,   y: l.y * r,   z: l.z * r) }
+    public static func *   (l: Float, r: Vec3 ) -> Vec3 { return Vec3 (x: r.x * l,   y: r.y * l,   z: r.z * l) }
 
-    private       func div (factor: Float) { if (factor != 0) { self.x = self.x / factor; self.y = self.y / factor; self.z = self.z / factor } }
+    private       func div (factor: Float) { if (factor != 0) { x = x / factor; y = y / factor; z = z / factor } }
     
     /* * * * * * * * * * * * * * * * * * * * *
      *  COMPARATORS
      * * * * * * * * * * * * * * * * * * * * */
-    public static func == (left: Vec3, right: Vec3) -> Bool { return ((left.x == right.x) && (left.y == right.y) && (left.z == right.z)) }
-    public static func != (left: Vec3, right: Vec3) -> Bool { return ((left.x != right.x) || (left.y != right.y) || (left.z != right.z)) }
+    public static func == (l: Vec3, r: Vec3) -> Bool { return ((l.x == r.x) && (l.y == r.y) && (l.z == r.z)) }
+    public static func != (l: Vec3, r: Vec3) -> Bool { return ((l.x != r.x) || (l.y != r.y) || (l.z != r.z)) }
     
     /* * * * * * * * * * * * * * * * * * * * *
      *  VECTOR OPERATIONS
      * * * * * * * * * * * * * * * * * * * * */
     public var normalised: Vec3 {
-        let mag = magnitude
-        let new = Vec3(v: 0)
-        if (mag != 0) {
-            new.x = self.x.divided(by: mag)
-            new.y = self.y.divided(by: mag)
-            new.z = self.z.divided(by: mag)
+        if (magnitude != 0) {
+            return Vec3(
+                x: x.divided(by: magnitude),
+                y: y.divided(by: magnitude),
+                z: z.divided(by: magnitude)
+            )
+        } else {
+            return Vec3(v: 0)
         }
-        return new
     }
     
     public var magnitude: Float {
-        return sqrt((self.x * self.x) + (self.y * self.y) + (self.z * self.z))
+        return sqrt((x * x) + (y * y) + (z * z))
     }
     
     public var length: Float {
@@ -84,6 +85,6 @@ public final class Vec3 : Vector {
      * * * * * * * * * * * * * * * * * * * * */
     public var asGLKVector: GLKVector3 { return GLKVector3Make (x, y, z) }
     public var string: (Float, Float, Float) { return (x, y, z) }
-    public var array: [Float] { return [self.x, self.y, self.z] }
+    public var array: [Float] { return [x, y, z] }
     
 }

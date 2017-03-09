@@ -2,7 +2,7 @@
  *  Vec4.swift
  *
  *  Created by Ryan Needham on 14/02/2017.
- *  Copyright © 2017 Baked Goods Studios. All rights reserved.
+ *  Copyr © 2017 Baked Goods Studios. All rs reserved.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 import Foundation
 import GLKit
@@ -17,51 +17,52 @@ public final class Vec4 : Vector {
     public var b: Float { return z }
     public var a: Float { return w }
     
-    public init (x: Float, y: Float, z: Float, w: Float) { self.x = x; self.y = y; self.z = z; self.w = w }
-    public init (r: Float, g: Float, b: Float, a: Float) { self.x = r; self.y = g; self.z = b; self.w = a }
-    public init (v: Float)                               { self.x = v; self.y = v; self.z = v; self.w = v }
+    public init (x: Float, y: Float, z: Float, w: Float) { self.x = x;   self.y = y;   self.z = z;   self.w = w }
+    public init (r: Float, g: Float, b: Float, a: Float) { self.x = r;   self.y = g;   self.z = b;   self.w = a }
+    public init (v: Float)                               { self.x = v;   self.y = v;   self.z = v;   self.w = v }
     public init (v: Vec4)                                { self.x = v.x; self.y = v.y; self.z = v.z; self.w = v.w }
-    public init ()                                       { self.x = 0; self.y = 0; self.z = 0; self.w = 0 }
+    public init ()                                       { self.x = 0;   self.y = 0;   self.z = 0;   self.w = 0 }
     
     /* * * * * * * * * * * * * * * * * * * * *
      *  ARITHMETIC
      * * * * * * * * * * * * * * * * * * * * */
-    public static func +=  (left: inout Vec4, right: Vec4)     { return left = left + right }
-    public static func +   (left: Vec4, right: Vec4) -> Vec4   { return Vec4 (x: left.x + right.x, y: left.y + right.y, z: left.z + right.z, w: left.w + right.w) }
+    public static func +=  (l: inout Vec4, r: Vec4)     { return l = l + r }
+    public static func +   (l: Vec4, r: Vec4) -> Vec4   { return Vec4 (x: l.x + r.x, y: l.y + r.y, z: l.z + r.z, w: l.w + r.w) }
 
-    public static func -=  (left: inout Vec4, right: Vec4)     { return left = left - right }
-    public static func -   (left: Vec4, right: Vec4) -> Vec4   { return Vec4 (x: left.x - right.x, y: left.y - right.y, z: left.z - right.z, w: left.w - right.w) }
+    public static func -=  (l: inout Vec4, r: Vec4)     { return l = l - r }
+    public static func -   (l: Vec4, r: Vec4) -> Vec4   { return Vec4 (x: l.x - r.x, y: l.y - r.y, z: l.z - r.z, w: l.w - r.w) }
 
-    public static func *=  (left: inout Vec4, right: Vec4)     { return left = left * right }
-    public static func *   (left: Vec4,  right: Vec4)  -> Vec4 { return Vec4 (x: left.x  * right.x, y: left.y  * right.y, z: left.z  * right.z, w: left.w  * right.w) }
-    public static func *   (left: Vec4,  right: Float) -> Vec4 { return Vec4 (x: left.x  * right,   y: left.y  * right,   z: left.z  * right,   w: left.w  * right) }
-    public static func *   (left: Float, right: Vec4 ) -> Vec4 { return Vec4 (x: right.x * left,    y: right.y * left,    z: right.z * left,    w: right.w * left) }
+    public static func *=  (l: inout Vec4, r: Vec4)     { return l = l * r }
+    public static func *   (l: Vec4,  r: Vec4)  -> Vec4 { return Vec4 (x: l.x * r.x, y: l.y * r.y, z: l.z * r.z, w: l.w * r.w) }
+    public static func *   (l: Vec4,  r: Float) -> Vec4 { return Vec4 (x: l.x * r,   y: l.y * r,   z: l.z * r,   w: l.w * r) }
+    public static func *   (l: Float, r: Vec4 ) -> Vec4 { return Vec4 (x: r.x * l,   y: r.y * l,   z: r.z * l,   w: r.w * l) }
     
-    private       func div (factor: Float) { if (factor != 0) { self.x = self.x / factor; self.y = self.y / factor; self.z = self.z / factor; self.w = self.w / factor } }
+    private       func div (factor: Float) { if (factor != 0) { x = x / factor; y = y / factor; z = z / factor; w = w / factor } }
 
     /* * * * * * * * * * * * * * * * * * * * *
      *  COMPARATORS
      * * * * * * * * * * * * * * * * * * * * */
-    public static func == (left: Vec4, right: Vec4) -> Bool { return ((left.x == right.x) && (left.y == right.y) && (left.z == right.z) && (left.w == right.w)) }
-    public static func != (left: Vec4, right: Vec4) -> Bool { return ((left.x != right.x) || (left.y != right.y) || (left.z != right.z) || (left.w != right.w)) }
+    public static func == (l: Vec4, r: Vec4) -> Bool { return ((l.x == r.x) && (l.y == r.y) && (l.z == r.z) && (l.w == r.w)) }
+    public static func != (l: Vec4, r: Vec4) -> Bool { return ((l.x != r.x) || (l.y != r.y) || (l.z != r.z) || (l.w != r.w)) }
     
     /* * * * * * * * * * * * * * * * * * * * *
      *  VECTOR OPERATIONS
      * * * * * * * * * * * * * * * * * * * * */
     public var normalised: Vec4 {
-        let mag = magnitude
-        let new = Vec4(v: 0)
-        if (mag != 0) {
-            new.x = self.x.divided(by: mag)
-            new.y = self.y.divided(by: mag)
-            new.z = self.z.divided(by: mag)
-            new.w = self.w.divided(by: mag)
+        if (magnitude != 0) {
+            return Vec4(
+                x: self.x.divided(by: magnitude),
+                y: self.y.divided(by: magnitude),
+                z: self.z.divided(by: magnitude),
+                w: self.w.divided(by: magnitude)
+            )
+        } else {
+            return Vec4(v: 0)
         }
-        return new
     }
     
     public var magnitude: Float {
-        return sqrt((self.x * self.x) + (self.y * self.y) + (self.z * self.z) + (self.w * self.w))
+        return sqrt((x * x) + (y * y) + (z * z) + (w * w))
     }
     
     public var length: Float {
@@ -89,5 +90,5 @@ public final class Vec4 : Vector {
      * * * * * * * * * * * * * * * * * * * * */
     public var asGLKVector: GLKVector4 { return GLKVector4Make (x, y, z, w) }
     public var string: (Float, Float, Float, Float) { return (x, y, z, w) }
-    public var array: [Float] { return [self.x, self.y, self.z, self.w] }
+    public var array: [Float] { return [x, y, z, w] }
 }

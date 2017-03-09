@@ -2,7 +2,7 @@
  *  Vec2.swift
  *
  *  Created by Ryan Needham on 14/02/2017.
- *  Copyright © 2017 Baked Goods Studios. All rights reserved.
+ *  Copyr © 2017 Baked Goods Studios. All rs reserved.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 import Foundation
 import GLKit
@@ -17,7 +17,7 @@ public final class Vec2 : Vector {
     
     public init (x: Float, y: Float) { self.x = x; self.y = y }
     public init (r: Float, g: Float) { self.x = r; self.y = g }
-    public init (u: Float, v: Float) { self.x = r; self.y = g }
+    public init (u: Float, v: Float) { self.x = u; self.y = v }
     public init (v: Float)           { self.x = v; self.y = v }
     public init (v: Vec2)            { self.x = v.x; self.y = v.y }
     public init ()                   { self.x = 0; self.y = 0 }
@@ -25,40 +25,41 @@ public final class Vec2 : Vector {
     /* * * * * * * * * * * * * * * * * * * * *
      *  ARITHMETIC OPERATIONS
      * * * * * * * * * * * * * * * * * * * * */
-    public static func +=  (left: inout Vec2, right: Vec2)      { return left = left + right }
-    public static func +   (left: Vec2, right: Vec2) -> Vec2    { return Vec2 (x: left.x + right.x, y: left.y + right.y) }
+    public static func +=  (l: inout Vec2, r: Vec2)     { return l = l + r }
+    public static func +   (l: Vec2, r: Vec2) -> Vec2   { return Vec2 (x: l.x + r.x, y: l.y + r.y) }
     
-    public static  func -=  (left: inout Vec2, right: Vec2)     { return left = left - right }
-    public static  func -   (left: Vec2, right: Vec2) -> Vec2   { return Vec2 (x: left.x - right.x, y: left.y - right.y) }
+    public static func -=  (l: inout Vec2, r: Vec2)     { return l = l - r }
+    public static func -   (l: Vec2, r: Vec2) -> Vec2   { return Vec2 (x: l.x - r.x, y: l.y - r.y) }
 
-    public static  func *=  (left: inout Vec2, right: Vec2)     { return left = left * right }
-    public static  func *   (left: Vec2,  right: Vec2 ) -> Vec2 { return Vec2 (x: left.x  * right.x, y: left.y  * right.y) }
-    public static  func *   (left: Vec2,  right: Float) -> Vec2 { return Vec2 (x: left.x  * right,   y: left.y  * right) }
-    public static  func *   (left: Float, right: Vec2 ) -> Vec2 { return Vec2 (x: right.x * left,    y: right.y * left) }
+    public static func *=  (l: inout Vec2, r: Vec2)     { return l = l * r }
+    public static func *   (l: Vec2,  r: Vec2 ) -> Vec2 { return Vec2 (x: l.x * r.x, y: l.y * r.y) }
+    public static func *   (l: Vec2,  r: Float) -> Vec2 { return Vec2 (x: l.x * r,   y: l.y * r) }
+    public static func *   (l: Float, r: Vec2 ) -> Vec2 { return Vec2 (x: r.x * l,   y: r.y * l) }
 
-    private        func div (factor: Float) { if (factor != 0) { self.x = self.x / factor; self.y = self.y / factor } }
+    private       func div (factor: Float) { if (factor != 0) { x = x / factor; y = y / factor } }
     
     /* * * * * * * * * * * * * * * * * * * * *
      *  COMPARATORS
      * * * * * * * * * * * * * * * * * * * * */
-    public static   func == (left: Vec2, right: Vec2) -> Bool { return ((left.x == right.x) && (left.y == right.y)) }
-    public static   func != (left: Vec2, right: Vec2) -> Bool { return ((left.x != right.x) || (left.y != right.y)) }
+    public static   func == (l: Vec2, r: Vec2) -> Bool { return ((l.x == r.x) && (l.y == r.y)) }
+    public static   func != (l: Vec2, r: Vec2) -> Bool { return ((l.x != r.x) || (l.y != r.y)) }
     
     /* * * * * * * * * * * * * * * * * * * * *
      *  VECTOR OPERATIONS
      * * * * * * * * * * * * * * * * * * * * */
     public var normalised: Vec2 {
-        let mag = magnitude
-        let new = Vec2(v: 0)
-        if (mag != 0) {
-            new.x = self.x.divided(by: mag)
-            new.y = self.y.divided(by: mag)
+        if (magnitude != 0) {
+            return Vec2(
+                x: x.divided(by: magnitude),
+                y: y.divided(by: magnitude)
+            )
+        } else {
+            return Vec2(v: 0)
         }
-        return new
     }
     
     public var magnitude: Float {
-        return sqrt((self.x * self.x) + (self.y * self.y))
+        return sqrt((x * x) + (y * y))
     }
     
     public var length: Float {
@@ -84,5 +85,6 @@ public final class Vec2 : Vector {
      * * * * * * * * * * * * * * * * * * * * */
     public var asGLKVector: GLKVector2 { return GLKVector2Make (x, y) }
     public var string: (Float, Float) { return (x, y) }
-    public var array: [Float] { return [self.x, self.y]}
+    public var array: [Float] { return [x, y]}
+
 }

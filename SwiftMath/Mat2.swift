@@ -3,7 +3,7 @@
 //  SwiftMath
 //
 //  Created by Ryan Needham on 19/02/2017.
-//  Copyright © 2017 Baked Goods Studios. All rights reserved.
+//  Copyr © 2017 Baked Goods Studios. All rs reserved.
 //
 public final class Mat2 : Matrix {
     
@@ -17,52 +17,52 @@ public final class Mat2 : Matrix {
     /* * * * * * * * * * * * * * * * * * * * *
      *  ARITHMETIC
      * * * * * * * * * * * * * * * * * * * * */
-    public static func += (left: inout Mat2, right: Mat2) { left = left + right }
-    public static func +  (left: Mat2, right: Mat2) -> Mat2 {
+    public static func += (l: inout Mat2, r: Mat2) { l = l + r }
+    public static func +  (l: Mat2, r: Mat2) -> Mat2 {
         let result = Mat2()
-        result.x = left.x + right.x;
-        result.y = left.y + right.y;
+        result.x = l.x + r.x;
+        result.y = l.y + r.y;
         return result
     }
     
-    public static func -= (left: inout Mat2, right: Mat2) { left = left - right }
-    public static func -  (left: Mat2, right: Mat2) -> Mat2 {
+    public static func -= (l: inout Mat2, r: Mat2) { l = l - r }
+    public static func -  (l: Mat2, r: Mat2) -> Mat2 {
         let result = Mat2()
-        result.x = left.x - right.x;
-        result.y = left.y - right.y;
+        result.x = l.x - r.x;
+        result.y = l.y - r.y;
         return result
     }
     
-    public static func *= (left: inout Mat2, right: Mat2) {}
-    public static func *  (left: Mat2, right: Mat2) -> Mat2 {
+    public static func *= (l: inout Mat2, r: Mat2) {}
+    public static func *  (l: Mat2, r: Mat2) -> Mat2 {
         let result = Mat2()
-        result.x = left.x * right.x;
-        result.y = left.y * right.y;
+        result.x = l.x * r.x;
+        result.y = l.y * r.y;
         return result
     }
     
-    public static func *  (left: Mat2, right: Vec2) -> Vec2 {
+    public static func *  (l: Mat2, r: Vec2) -> Vec2 {
         return Vec2 (
-            x: right.x * left.x.x,
-            y: right.y * left.y.y
+            x: r.x * l.x.x,
+            y: r.y * l.y.y
         )
     }
     
-    public static func *  (left: Vec2, right: Mat2) -> Vec2 {
+    public static func *  (l: Vec2, r: Mat2) -> Vec2 {
         return Vec2 (
-            x: left.x * right.x.x,
-            y: left.y * right.y.y
+            x: l.x * r.x.x,
+            y: l.y * r.y.y
         )
     }
     
     /* * * * * * * * * * * * * * * * * * * * *
      *  COMPARISON
      * * * * * * * * * * * * * * * * * * * * */
-    public static func == (left: Mat2, right: Mat2) -> Bool {
-        return (left.x == right.x) && (left.y == right.y)
+    public static func == (l: Mat2, r: Mat2) -> Bool {
+        return (l.x == r.x) && (l.y == r.y)
     }
     
-    public static func != (left: Mat2, right: Mat2) -> Bool {
-        return (left.x != right.x) || (left.y != right.y)
+    public static func != (l: Mat2, r: Mat2) -> Bool {
+        return (l.x != r.x) || (l.y != r.y)
     }
 }

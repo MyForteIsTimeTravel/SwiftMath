@@ -2,7 +2,7 @@
  *  Vector.swift
  *
  *  Created by Ryan Needham on 14/02/2017.
- *  Copyright © 2017 Baked Goods Studios. All rights reserved.
+ *  Copyr © 2017 Baked Goods Studios. All rs reserved.
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 import GLKit
 
@@ -11,21 +11,21 @@ protocol Vector {
     /* * * * * * * * * * * * * * * * * * * * *
      *  ARITHMETIC
      * * * * * * * * * * * * * * * * * * * * */
-    static func += (left: inout Self, right: Self)
-    static func *= (left: inout Self, right: Self)
-    static func -= (left: inout Self, right: Self)
+    static func += (l: inout Self, r: Self)
+    static func *= (l: inout Self, r: Self)
+    static func -= (l: inout Self, r: Self)
     
-    static func +  (left: Self,  right: Self)  -> Self
-    static func -  (left: Self,  right: Self)  -> Self
-    static func *  (left: Self,  right: Self)  -> Self
-    static func *  (left: Self,  right: Float) -> Self
-    static func *  (left: Float, right: Self)  -> Self
+    static func +  (l: Self,  r: Self)  -> Self
+    static func -  (l: Self,  r: Self)  -> Self
+    static func *  (l: Self,  r: Self)  -> Self
+    static func *  (l: Self,  r: Float) -> Self
+    static func *  (l: Float, r: Self)  -> Self
     
     /* * * * * * * * * * * * * * * * * * * * *
      *  COMPARISON
      * * * * * * * * * * * * * * * * * * * * */
-    static func == (left: Self, right: Self) -> Bool
-    static func != (left: Self, right: Self) -> Bool
+    static func == (l: Self, r: Self) -> Bool
+    static func != (l: Self, r: Self) -> Bool
 
     /* * * * * * * * * * * * * * * * * * * * *
      *  CUSTOM / OTHER

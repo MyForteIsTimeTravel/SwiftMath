@@ -7,23 +7,42 @@
 //
 
 import XCTest
+import GLKit
 @testable import SwiftMath
 
 class SwiftMathTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+
         super.tearDown()
     }
+
+    /** 
+     *  dot product test
+     */
+    func testDotProduct () {
+        // Vector 2D
+        XCTAssert (
+            Vec2(v: 1.48).dot(other: Vec2(v: 4.58)) ==
+            GLKVector2DotProduct(GLKVector2Make(1.48, 1.48), GLKVector2Make(4.58, 4.58))
+        )
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        // Vector 3D
+        XCTAssert (
+            Vec3(v: 1.48).dot(other: Vec3(v: 4.58)) ==
+            GLKVector3DotProduct(GLKVector3Make(1.48, 1.48, 1.48), GLKVector3Make(4.58, 4.58, 4.58))
+        )
+        
+        // Vector 4D
+        XCTAssert (
+            Vec4(v: 1.48).dot(other: Vec4(v: 4.58)) ==
+            GLKVector4DotProduct(GLKVector4Make(1.48, 1.48, 1.48, 1.48), GLKVector4Make(4.58, 4.58, 4.58, 4.58))
+        )
     }
     
     func testPerformanceExample() {
@@ -32,5 +51,4 @@ class SwiftMathTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-    
 }
