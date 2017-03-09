@@ -49,41 +49,15 @@ public final class Vec4 : Vector {
      *  VECTOR OPERATIONS
      * * * * * * * * * * * * * * * * * * * * */
     public var normalised: Vec4 {
-        if (magnitude != 0) {
-            return Vec4(
-                x: self.x.divided(by: magnitude),
-                y: self.y.divided(by: magnitude),
-                z: self.z.divided(by: magnitude),
-                w: self.w.divided(by: magnitude)
-            )
-        } else {
-            return Vec4(v: 0)
-        }
+        if (magnitude != 0) { return Vec4(x: x.divided(by: magnitude), y: y.divided(by: magnitude), z: z.divided(by: magnitude), w: w.divided(by: magnitude)) }
+        else { return Vec4(v: 0) }
     }
     
-    public var magnitude: Float {
-        return sqrt((x * x) + (y * y) + (z * z) + (w * w))
-    }
+    public var magnitude: Float { return sqrt((x * x) + (y * y) + (z * z) + (w * w)) }
+    public var length:    Float { return magnitude }
     
-    public var length: Float {
-        return magnitude
-    }
-    
-    // Cross only exists on 3 and 7 dimension vectors
-    public func cross (other: Vec4) -> Vec4 {
-        return Vec4 (
-            x: 0.0,
-            y: 0.0,
-            z: 0.0,
-            w: 0.0
-        )
-    }
-    
-    public func dot (other: Vec4) -> Float {
-        return zip  (self.array, other.array)
-            .map    (*)
-            .reduce (0, {$0 + $1})
-    }
+    public func cross (other: Vec4) -> Vec4  { return Vec4 (x: 0.0, y: 0.0, z: 0.0, w: 0.0) }  // Cross only exists on 3 and 7 dimension vectors
+    public func dot   (other: Vec4) -> Float { return zip  (self.array, other.array).map(*).reduce(0, {$0 + $1})}
     
     /* * * * * * * * * * * * * * * * * * * * *
      *  DEBUG / UTILITY

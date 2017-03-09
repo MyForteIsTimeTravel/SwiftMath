@@ -47,38 +47,15 @@ public final class Vec3 : Vector {
      *  VECTOR OPERATIONS
      * * * * * * * * * * * * * * * * * * * * */
     public var normalised: Vec3 {
-        if (magnitude != 0) {
-            return Vec3(
-                x: x.divided(by: magnitude),
-                y: y.divided(by: magnitude),
-                z: z.divided(by: magnitude)
-            )
-        } else {
-            return Vec3(v: 0)
-        }
+        if (magnitude != 0) { return Vec3(x: x.divided(by: magnitude), y: y.divided(by: magnitude), z: z.divided(by: magnitude)) }
+        else { return Vec3(v: 0) }
     }
     
-    public var magnitude: Float {
-        return sqrt((x * x) + (y * y) + (z * z))
-    }
-    
-    public var length: Float {
-        return magnitude
-    }
+    public var magnitude: Float { return sqrt((x * x) + (y * y) + (z * z)) }
+    public var length:    Float { return magnitude }
 
-    public func cross (other: Vec3) -> Vec3 {
-        return Vec3 (
-            x: (self.y * other.z) - (other.y * self.z),
-            y: (self.z * other.x) - (other.z * self.x),
-            z: (self.x * other.y) - (other.x * self.y)
-        )
-    }
-    
-    public func dot (other: Vec3) -> Float {
-        return zip  (self.array, other.array)
-            .map    (*)
-            .reduce (0, {$0 + $1})
-    }
+    public func cross (other: Vec3) -> Vec3  { return Vec3 (x: (y * other.z) - (other.y * z), y: (z * other.x) - (other.z * x), z: (x * other.y) - (other.x * y)) }
+    public func dot   (other: Vec3) -> Float { return zip (self.array, other.array).map (*).reduce (0, {$0 + $1}) }
     
     /* * * * * * * * * * * * * * * * * * * * *
      *  DEBUG / UTILITY

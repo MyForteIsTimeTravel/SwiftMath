@@ -48,37 +48,15 @@ public final class Vec2 : Vector {
      *  VECTOR OPERATIONS
      * * * * * * * * * * * * * * * * * * * * */
     public var normalised: Vec2 {
-        if (magnitude != 0) {
-            return Vec2(
-                x: x.divided(by: magnitude),
-                y: y.divided(by: magnitude)
-            )
-        } else {
-            return Vec2(v: 0)
-        }
+        if (magnitude != 0) { return Vec2(x: x.divided(by: magnitude), y: y.divided(by: magnitude)) }
+        else { return Vec2(v: 0) }
     }
     
-    public var magnitude: Float {
-        return sqrt((x * x) + (y * y))
-    }
+    public var magnitude: Float { return sqrt((x * x) + (y * y)) }
+    public var length:    Float { return magnitude }
     
-    public var length: Float {
-        return magnitude
-    }
-    
-    // Cross only exists on 3 and 7 dimension vectors
-    public func cross (other: Vec2) -> Vec2 {
-        return Vec2 (
-            x: 0.0,
-            y: 0.0
-        )
-    }
-    
-    public func dot (other: Vec2) -> Float {
-        return zip  (self.array, other.array)
-            .map    (*)
-            .reduce (0, {$0 + $1})
-    }
+    public func cross (other: Vec2) -> Vec2  { return Vec2 (x: 0.0, y: 0.0) }
+    public func dot   (other: Vec2) -> Float { return zip (self.array, other.array).map (*).reduce (0, {$0 + $1})}
 
     /* * * * * * * * * * * * * * * * * * * * *
      *  DEBUG / UTILITY
